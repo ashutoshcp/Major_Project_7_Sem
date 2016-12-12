@@ -261,18 +261,6 @@ avg=sum/n;
 STATISTICS(r+1).AVG=avg;
 sum;
 
-
-%Code for Voronoi Cells
-%Unfortynately if there is a small
-%number of cells, Matlab's voronoi
-%procedure has some problems
-
-%[vx,vy]=voronoi(X,Y);
-%plot(X,Y,'r*',vx,vy,'b-');
-% hold on;
-% voronoi(X,Y);
-% axis([0 xm 0 ym]);
-
 end
 figure(2);
 for r=0:1:24
