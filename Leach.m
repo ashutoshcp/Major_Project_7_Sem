@@ -1,9 +1,7 @@
-
 clear;
+%PARAMETERS
 
-%Parameters Used
-
-%Field Dimensions - x and y maximum (in meters)
+% dimensions x(m), y(m)
 xm=100;
 ym=100;
 
@@ -11,27 +9,28 @@ ym=100;
 sink.x=1.5*xm;
 sink.y=0.5*ym;
 
-%Number of Nodes in the field (change it as per the requirement)
+%Number of Nodes in the field
 n=200
 
-%Optimal Election Probability of a node
-%to become cluster head
-p=0.2; % varying probability
+%Optimal Election Probability of a node to become cluster head
+p=0.2; %Variable
 
 %Energy Model (all values in Joules)
 %Initial Energy 
 Eo=0.1;
+
 %Eelec=Etx=Erx
 ETX=50*0.000000001;
 ERX=50*0.000000001;
+
 %Transmit Amplifier types
 Efs=10*0.000000000001;
 Emp=0.0013*0.000000000001;
+
 %Data Aggregation Energy
 EDA=5*0.000000001;
 
-%Values for Hetereogeneity
-%Percentage of nodes than are advanced
+%Values for Hetereogeneity Percentage of nodes than are advanced
 m=0.0;
 %\alpha
 a=1;
@@ -39,13 +38,13 @@ a=1;
 %maximum number of rounds
 rmax=100
 
-%Parameters done bro!!
+%PARAMETERS Done
 
 %Computation of do
 do=sqrt(Efs/Emp);
 
 %Creation of the random Sensor Network
-figure(1);
+%figure(1);
 hold off;
 for i=1:1:n
     S(i).xd=rand(1,1)*xm;
@@ -79,10 +78,11 @@ S(n+1).yd=sink.y;
     
         
 %First Iteration
-figure(1);
+%figure(1);
 
 %counter for CHs
 countCHs=0;
+
 %counter for CHs per round
 rcountCHs=0;
 cluster=1;
@@ -106,20 +106,22 @@ hold off;
 
 %Number of dead nodes
 dead=0;
+
 %Number of dead Advanced Nodes
 dead_a=0;
+
 %Number of dead Normal Nodes
 dead_n=0;
 
 %counter for bit transmitted to Bases Station and to Cluster Heads
 packets_TO_BS=0;
 packets_TO_CH=0;
-%counter for bit transmitted to Bases Station and to Cluster Heads 
-%per round
+
+%counter for bit transmitted to Bases Station and to Cluster Heads  per round
 PACKETS_TO_CH(r+1)=0;
 PACKETS_TO_BS(r+1)=0;
 
-figure(1);
+%figure(1);
 
 for i=1:1:n
     %checking if there is a dead node
@@ -140,7 +142,7 @@ for i=1:1:n
     %    plot(S(i).xd,S(i).yd,'o');
         end
         if (S(i).ENERGY==1)  
-        plot(S(i).xd,S(i).yd,'+');
+        %plot(S(i).xd,S(i).yd,'+');
         end
         hold on;
     end
@@ -262,56 +264,16 @@ STATISTICS(r+1).AVG=avg;
 sum;
 
 end
+
 figure(2);
-for r=0:1:24
-    ylabel('Average Energy of Each Node');
-    xlabel('Round Number');
-    plot([r r+1],[STATISTICS(r+1).AVG STATISTICS(r+2).AVG],'red');
-    hold on;
-end
-figure(3);
-for r=0:1:49
-    ylabel('Average Energy of Each Node');
-    xlabel('Round Number');
-    plot([r r+1],[STATISTICS(r+1).AVG STATISTICS(r+2).AVG],'red');
-    hold on;
-end
-figure(4);
-for r=0:1:74
-    ylabel('Average Energy of Each Node');
-    xlabel('Round Number');
-    plot([r r+1],[STATISTICS(r+1).AVG STATISTICS(r+2).AVG],'red');
-    hold on;
-end
-figure(5);
 for r=0:1:99
     ylabel('Average Energy of Each Node');
     xlabel('Round Number');
     plot([r r+1],[STATISTICS(r+1).AVG STATISTICS(r+2).AVG],'red');
     hold on;
 end
-figure(6);
-for r=0:1:24
-    ylabel('Number of Dead Nodes');
-    xlabel('Round Number');
-    plot([r r+1],[STATISTICS(r+1).DEAD STATISTICS(r+2).DEAD],'red');
-    hold on;
-end
-figure(7);
-for r=0:1:49
-        ylabel('Number of Dead Nodes');
-    xlabel('Round Number');
-    plot([r r+1],[STATISTICS(r+1).DEAD STATISTICS(r+2).DEAD],'red');
-    hold on;
-end
-figure(8);
-for r=0:1:74
-        ylabel('Number of Dead Nodes');
-    xlabel('Round Number');
-    plot([r r+1],[STATISTICS(r+1).DEAD STATISTICS(r+2).DEAD],'red');
-    hold on;
-end
-figure(9);
+
+figure(3);
 for r=0:1:99
         ylabel('Number of Dead Nodes');
     xlabel('Round Number');
